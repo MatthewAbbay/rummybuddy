@@ -35,7 +35,7 @@ public class Match : MonoBehaviour
 
 
     public void StartRound()
-    { 
+    {
         if (RoundCount != 0)
         {
             Dealer.instance.ShuffleCoroutine(); //Clean table, shuffle, deal
@@ -47,8 +47,20 @@ public class Match : MonoBehaviour
     public void UpdateMatchResult(string winner, int score)
     {
         //update
+        PlayerScore = PlayerHand.instance.DeadwoodPoints;
+        //AIScore = AIHand.instance.DeadwoodPoints;
+
         //if either +100 points, call EndMatch
+        if (PlayerScore > 100 || AIScore > 100)
+        {
+            print("Score is over 100");
+            //Invoke("EndMatch", 1f);
+        }
         //else call DisplayRoundResult
+        //else
+        //{
+            //Invoke("DisplayRoundResult", 1f);
+        //}
     }
 
     public void DisplayRoundResult()
